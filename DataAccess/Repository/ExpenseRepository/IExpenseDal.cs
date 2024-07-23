@@ -17,5 +17,9 @@ namespace DataAccess.Repository.ExpenseRepository
         void UpdateExpense(Expense expense);
         void DeleteExpense(int id);
 
+        List<Expense> GetAllInvoices();
+
+      
+
     }
 }

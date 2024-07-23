@@ -77,6 +77,18 @@ namespace WebApi.Controllers
             return BadRequest(result.Message);
         }
 
+        [HttpGet("getAllInvoices")]
+
+        public IActionResult GetAllInvoices()
+        {
+            var result = _expenseService.GetAllInvoices();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }   
+
     }
 
 }

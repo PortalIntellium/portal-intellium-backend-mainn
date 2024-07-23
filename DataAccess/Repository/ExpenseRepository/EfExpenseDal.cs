@@ -58,5 +58,16 @@ namespace DataAccess.Repository.ExpenseRepository
                 }
             }
         }
+
+        public List<Expense> GetAllInvoices()
+        {
+            using(var context = new PortalContext())
+
+            {
+                return context.Expenses.ToList();
+            }
+        }
+
+        
     }
 }

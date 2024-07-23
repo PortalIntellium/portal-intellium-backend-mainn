@@ -63,7 +63,8 @@ namespace Business.Repository.ExpenseRepository
                     InvoiceNumber = expenseDto.InvoiceNumber,
                     InvoiceTitle = expenseDto.InvoiceTitle,
                     ImageData = imageDataBytes,
-                    IsActive = true
+                    IsActive = true,
+                    
                 };
 
                 _expenseDal.AddExpense(expense);
@@ -79,7 +80,7 @@ namespace Business.Repository.ExpenseRepository
             }
         }
 
-public IResult Update(ExpenseDto expenseDto)
+         public IResult Update(ExpenseDto expenseDto)
         {
             var expense = _expenseDal.GetById(expenseDto.Id);
 
@@ -113,6 +114,13 @@ public IResult Update(ExpenseDto expenseDto)
             expense.InvoiceDate = expenseDto.InvoiceDate;
             expense.InvoiceNumber = expenseDto.InvoiceNumber;
             expense.InvoiceTitle = expenseDto.InvoiceTitle;
+            expense.IsConfirmation = expenseDto.IsConfirmation; 
+
+            // SendConfirmation özelliğini güncelleme kısmı
+            if (expenseDto.IsConfirmation != expense.IsConfirmation)
+            {
+                expense.IsConfirmation = expenseDto.IsConfirmation;
+            }
 
             _expenseDal.UpdateExpense(expense);
             return new SuccessResult("Expense updated successfully");
@@ -144,6 +152,12 @@ public IResult Update(ExpenseDto expenseDto)
                 return new ErrorDataResult<Expense>("Expense not found");
             }
             return new SuccessDataResult<Expense>(expense, "Expense retrieved successfully");
+        }
+
+        public IDataResult<List<Expense>> GetAllInvoices()
+        {
+            var expenses = _expenseDal.GetAll();
+            return new SuccessDataResult<List<Expense>>(expenses, "Invoices retrieved successfully");
         }
     }
 }

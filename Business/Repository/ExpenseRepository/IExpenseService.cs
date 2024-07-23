@@ -17,5 +17,9 @@ namespace Business.Repository.ExpenseRepository
         IDataResult<List<Expense>> GetAll( long userId);
         IDataResult<Expense> GetById(int id);
 
+        IDataResult<List<Expense>> GetAllInvoices();
+
+      
+
     }
 }

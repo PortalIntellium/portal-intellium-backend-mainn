@@ -36,5 +36,7 @@ namespace Entities.DTOs.ExpenseDto.ExpenseDto
 
         public bool IsActive { get; set; }
         public string ImageData { get; set; }
+
+        public bool IsConfirmation { get; set; }
     }
 }
