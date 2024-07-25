@@ -35,7 +35,7 @@ namespace Entities.Concrete
         public bool IsActive { get; set; }
         public byte[] ImageData { get; set; }
 
-        public bool IsConfirmation  { get; set; }
+        public bool IsConfirmation  { get; set; } = false; //Admin onayı için
 
 
 
